@@ -55,6 +55,24 @@ app.post('/api/genres',function(req,res){
     
     });
 
+
+    //update the genres table
+app.put('/api/genres/:_id', function(req,res){
+    
+    var id = req.params._id;
+    var genre = req.body;
+    console.log(genre);
+        Genre.updateGenre(id, genre, {}, function(err,genre){
+            if(err){
+                throw err;
+            }
+            res.json(genre);
+        });
+    
+    });
+
+
+   //get all book from mongodb 
 app.get('/api/books',function(req,res){
     
         Book.getBooks(function(err,books){
@@ -79,6 +97,8 @@ app.get('/api/books',function(req,res){
             });
         
         });
+
+
 
 
 
