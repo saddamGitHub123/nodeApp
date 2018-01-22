@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -71,6 +73,20 @@ app.put('/api/genres/:_id', function(req,res){
     
     });
 
+       //delete the genres table
+app.delete('/api/genres/:_id', function(req,res){
+    
+    var id = req.params._id;
+   
+        Genre.deleteGenre(id, function(err,genre){
+            if(err){
+                throw err;
+            }
+            res.json(genre);
+        });
+    
+    });
+
 
    //get all book from mongodb 
 app.get('/api/books',function(req,res){
@@ -112,6 +128,23 @@ app.get('/api/books',function(req,res){
             });
         
         });
+
+        //update the book object using id
+
+        app.put('/api/books/:_id',function(req,res){
+
+            var id = req.params._id;
+            var book = req.body;
+            console.log(book);
+
+                Book.updateBook(id, book, {}, function(err,book){
+                    if(err){
+                        throw err;
+                    }
+                    res.json(book);
+                });
+            
+            });
 
 app.listen(3000,function(){
 
