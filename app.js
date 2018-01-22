@@ -1,10 +1,12 @@
 
 
 var express = require('express');
+
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const mysql = require('mysql');
 
 app.use(bodyParser.json());
 
@@ -19,6 +21,36 @@ Book = require('./models/book');
 //use middleware
 
 //define routes
+
+//create connection  mysql
+
+const mysqlDb = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'root',
+   // database : 'nodemysql'
+    
+});
+
+//connect
+mysqlDb.connect((err) =>{
+    if(err){
+        throw err;
+    }
+    console.log("Mysql connected");
+});
+
+//Create database
+
+app.get('/createdb', (req, res) => {
+
+    let sql = 'CREATE DATABASE nodemysql';
+    mysqlDb.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('Database created ....');
+    });
+});
 
 
 //connect to mongoose
