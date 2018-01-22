@@ -1,0 +1,24 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "Node application using add ,show , delete and update projet api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saddamGitHub123/nodeApp.git"
+  },
+  "author": "saddam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saddamGitHub123/nodeApp/issues"
+  },
+  "homepage": "https://github.com/saddamGitHub123/nodeApp#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "body-parser": "*",
+    "mongoose": "*"
+  }
+}
